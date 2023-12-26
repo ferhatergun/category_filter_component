@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.content::-webkit-scrollbar{
+    width: 5px;
+}
+.content::-webkit-scrollbar-thumb {
+    background-color: #b7b7b7; /* Scroll çubuğu rengi */
+    border-radius: 6px; /* Scroll çubuğu köşelerini yuvarla */
+  }
+
+.content::-webkit-scrollbar-track {
+    background-color: #e2e2e2; /* Scroll çubuğu arkaplan rengi */
+  }
