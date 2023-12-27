@@ -11,12 +11,12 @@
     width: 5px;
 }
 .content::-webkit-scrollbar-thumb {
-    background-color: #b7b7b7; /* Scroll çubuğu rengi */
-    border-radius: 6px; /* Scroll çubuğu köşelerini yuvarla */
+    background-color: #b7b7b7;
+    border-radius: 6px; 
   }
 
 .content::-webkit-scrollbar-track {
-    background-color: #e2e2e2; /* Scroll çubuğu arkaplan rengi */
+    background-color: #e2e2e2; 
   }
 
 .select{
@@ -24,7 +24,7 @@
 }
 
 input{
-  background-image: url('search.svg'); /* Arama simgesinin yolunu buraya ekleyin */
+  background-image: url('/dist/search.svg');
   background-repeat: no-repeat;
   background-position-x: 95%;
   background-position-y: 50%;

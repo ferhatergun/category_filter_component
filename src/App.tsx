@@ -6,7 +6,6 @@ import toast from 'react-hot-toast'
 
 interface Item {
   data: string[] | undefined
-  error: unknown
   isLoading: boolean
 }
 
@@ -26,7 +25,7 @@ export const App = () => {
     }
   },[])
 
-  const { data, error, isLoading }:Item = useQuery('Items', fetchData)
+  const { data, isLoading }:Item = useQuery('Items', fetchData)
   return (
     <div className="w-[100vw] h-[100vh] flex justify-center items-center">
       <div className="bg-gray-50 w-72 h-80 border-gray-300 
@@ -40,7 +39,8 @@ export const App = () => {
         onChange={(e)=>setSearch(e.target.value)}
         />
         {/* key değeri selectItems de her değişiklik yapıldığında divi render etmek için kullanıldı */}
-        <div className="h-44 overflow-y-scroll content mt-2" key={selectItems.length}> 
+        <div className="h-44 overflow-y-scroll content mt-2" key={selectItems.length}>
+          {isLoading && <>Yükleniyor..</>}
           {
             //seçili seçenekleri en üstte gösterdik
             data?.filter((item)=>selectItems.includes(item))
