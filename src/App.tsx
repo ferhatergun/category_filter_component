@@ -1,3 +1,4 @@
+import SelectBox from './components/SelectBox'
 import items from './items.json'
 import { useQuery } from 'react-query'
 
@@ -27,7 +28,7 @@ export const App = () => {
         <div className="h-44 overflow-y-scroll content mt-2"> 
           { !isLoading ?
             data?.map((item:string,index:number)=>(
-              <p key={index}>{item}</p>
+              <SelectBox key={index} itemName={item}  />
             )):
             <p>Yükleniyor</p>
           }
@@ -36,7 +37,6 @@ export const App = () => {
           <p>Ara</p>
         </button>
       </div>
-
     </div>
   )
 }
