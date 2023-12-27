@@ -22,3 +22,10 @@
 .select{
   background-color: rgb(37 99 235);
 }
+
+input{
+  background-image: url('search.svg'); /* Arama simgesinin yolunu buraya ekleyin */
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: 50%;
+}
