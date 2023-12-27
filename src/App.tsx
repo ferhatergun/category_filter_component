@@ -1,6 +1,7 @@
 import SelectBox from './components/SelectBox'
 import items from './items.json'
 import { useQuery } from 'react-query'
+import { useEffect, useState } from 'react'
 
 interface Item {
   data: string[] | undefined
@@ -9,10 +10,19 @@ interface Item {
 }
 
 export const App = () => {
+  const [selectItems, setSelectItems] = useState<string[]>([])
+  console.log(selectItems)
 
   const fetchData = () => {
     return Promise.resolve(items.data)
   }
+
+  useEffect(()=>{
+    const items = localStorage.getItem('items')
+    if(items){
+      setSelectItems(JSON.parse(items))
+    }
+  },[])
 
   const { data, error, isLoading }:Item = useQuery('Items', fetchData)
   return (
@@ -28,12 +38,19 @@ export const App = () => {
         <div className="h-44 overflow-y-scroll content mt-2"> 
           { !isLoading ?
             data?.map((item:string,index:number)=>(
-              <SelectBox key={index} itemName={item}  />
+              <SelectBox 
+              key={index} 
+              itemName={item} 
+              setSelectItems={setSelectItems} 
+              isSelected={selectItems.includes(item)}
+              />
             )):
             <p>Yükleniyor</p>
           }
         </div>
-        <button className="bg-blue-600 text-sm text-white w-full h-8 mt-2 rounded-md">
+        <button className="bg-blue-600 text-sm text-white w-full h-8 
+        mt-2 rounded-md" 
+        onClick={()=>localStorage.setItem('items',JSON.stringify(selectItems))}>
           <p>Ara</p>
         </button>
       </div>

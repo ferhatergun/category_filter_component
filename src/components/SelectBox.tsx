@@ -2,14 +2,22 @@ import { useState } from "react"
 
 interface SelectBoxProps {
     itemName:string,
-    isSelected?:boolean
+    isSelected?:boolean,
+    setSelectItems:React.Dispatch<React.SetStateAction<string[]>>,
 }
 
-export default function SelectBox({itemName,isSelected}:SelectBoxProps) {
+export default function SelectBox({itemName,isSelected,setSelectItems}:SelectBoxProps) {
     const [selected, setSelected] = useState(isSelected || false)
 
     const handleClick = () => {
-        setSelected(!selected)
+        if(selected){
+            setSelectItems(prev=>prev.filter((item)=> item !== itemName))
+            setSelected(false)
+        }else{
+            setSelected(true)
+            setSelectItems((prev)=>[...prev,itemName])
+        }
+       
     }
   return (
     <div className='flex items-center gap-1 cursor-pointer radioBtn my-1'
